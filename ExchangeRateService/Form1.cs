@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace ExchangeRateService
 {
+
+    
+
     public partial class Form1 : Form
     {
         public Form1()
@@ -22,13 +28,75 @@ namespace ExchangeRateService
 
         private void LoadExchangeRates()
         {
-            // 예시 데이터 (실제로는 API 호출로 데이터를 가져와야 함)
-            string currentRate = "1 USD = 1300 KRW";
-            string yesterdayRate = "1 USD = 1295 KRW";
+            string apiKey = "Qq8kuh8nL4y883AB2MrS56y8G4U79tTj";
 
-            // 텍스트박스에 데이터 바인딩
-            text_today.Text = $"현재 환율: {currentRate}";
-            text_yesterday.Text = $"어제 환율: {yesterdayRate}";
+            string todayDate = DateTime.Now.ToString("yyyyMMdd");
+            string yesterdayDate = DateTime.Today.AddDays(-1).ToString("yyyyMMdd");
+
+            string todayExURL = "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=" +
+                apiKey +
+                "&searchdate=" +
+                todayDate +
+                "&data=AP01";
+            string yesterdayExURL = "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=" +
+                apiKey +
+                "&searchdate=" +
+                yesterdayDate +
+                "&data=AP01";
+
+            string todayRate = GetExchangeRate(todayExURL);
+
+            string yesterdayRate = GetExchangeRate(yesterdayExURL);
+
+            if (!string.IsNullOrEmpty(todayRate))
+            {
+                text_today.Text = $"1$ = {todayRate} \\";
+            }
+
+            if (!string.IsNullOrEmpty(yesterdayRate))
+            {
+                text_yesterday.Text = $"1$ = {yesterdayRate} \\";
+            }
+        }
+
+        private string GetExchangeRate(string url)
+        {
+            try
+            {
+                HttpWebRequest hwr = (HttpWebRequest)WebRequest.Create(url);
+                hwr.ContentType = "application/json";
+
+                using (HttpWebResponse hwrResult = hwr.GetResponse() as HttpWebResponse)
+                {
+                    Stream sr = hwrResult.GetResponseStream();
+                    using (StreamReader srd = new StreamReader(sr))
+                    {
+                        string strResult = srd.ReadToEnd();
+
+                        // JSON 데이터 파싱
+                        var exchangeRates = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ExchangeRate>>(strResult);
+                        var usdRate = exchangeRates.FirstOrDefault(rate => rate.cur_unit == "USD")?.deal_bas_r;
+
+                        return usdRate; // USD의 deal_bas_r 값 반환
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"데이터 가져오기 오류: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public class ExchangeRate
+        {
+            public int result { get; set; }
+            public string cur_unit { get; set; }
+            public string ttb { get; set; }
+            public string tts { get; set; }
+            public string deal_bas_r { get; set; }
+            public string bkpr { get; set; }
+            public string cur_nm { get; set; }
         }
 
         private void LoadArticles()
