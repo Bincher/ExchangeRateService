@@ -37,7 +37,7 @@ namespace ExchangeRateService
 
         private void LoadExchangeRates()
         {
-            string apiKey = "API-KEY";
+            string apiKey = "apikey";
 
             string todayDate = DateTime.Now.ToString("yyyyMMdd");
             string yesterdayDate = DateTime.Today.AddDays(-1).ToString("yyyyMMdd");
