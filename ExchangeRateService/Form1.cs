@@ -9,7 +9,10 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Timers;
 using static System.Net.WebRequestMethods;
+using System.Security.Policy;
+using HtmlAgilityPack;
 
 namespace ExchangeRateService
 {
@@ -18,17 +21,23 @@ namespace ExchangeRateService
 
     public partial class Form1 : Form
     {
+
         public Form1()
         {
+
             InitializeComponent();
-            LoadExchangeRates();
-            LoadArticles();
-            
+            //LoadExchangeRates();
+            //LoadArticles();
+            System.Timers.Timer timer;
+            timer = new System.Timers.Timer(10000);
+            timer.Elapsed += OnTimerElapsed;
+            timer.AutoReset = true;
+            timer.Enabled = true;
         }
 
         private void LoadExchangeRates()
         {
-            string apiKey = "Qq8kuh8nL4y883AB2MrS56y8G4U79tTj";
+            string apiKey = "API-KEY";
 
             string todayDate = DateTime.Now.ToString("yyyyMMdd");
             string yesterdayDate = DateTime.Today.AddDays(-1).ToString("yyyyMMdd");
@@ -101,6 +110,9 @@ namespace ExchangeRateService
 
         private void LoadArticles()
         {
+
+
+
             // 크롤링한 기사 데이터를 예시로 배열에 저장
             string[] articles = new string[]
             {
@@ -127,6 +139,82 @@ namespace ExchangeRateService
             text_article8.Text = articles[7];
             text_article9.Text = articles[8];
             text_article10.Text = articles[9];
+        }
+
+        private void OnTimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            try
+            {
+                
+
+                string keyword = "환율";
+                string url = "https://finance.naver.com/news/mainnews.nhn";
+                List<string> headlines = GetStockHeadlines(url, keyword);
+
+                if (headlines != null)
+                {
+                    string[] articles = headlines.Take(10).ToArray();
+
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        text_article1.Text = articles.Length > 0 ? articles[0] : "";
+                        text_article2.Text = articles.Length > 1 ? articles[1] : "";
+                        text_article3.Text = articles.Length > 2 ? articles[2] : "";
+                        text_article4.Text = articles.Length > 3 ? articles[3] : "";
+                        text_article5.Text = articles.Length > 4 ? articles[4] : "";
+                        text_article6.Text = articles.Length > 5 ? articles[5] : "";
+                        text_article7.Text = articles.Length > 6 ? articles[6] : "";
+                        text_article8.Text = articles.Length > 7 ? articles[7] : "";
+                        text_article9.Text = articles.Length > 8 ? articles[8] : "";
+                        text_article10.Text = articles.Length > 9 ? articles[9] : "";
+                    });
+                }
+                else
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        text_article1.Text = "환율과 관련된 기사가 없습니다.";
+                    });
+                }
+
+                Console.WriteLine("작업이 완료되었습니다.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"예외가 발생했습니다: {ex.Message}");
+            }
+        }
+
+        private List<string> GetStockHeadlines(string url, string keyword)
+        {
+            try
+            {
+                List<string> headlines = new List<string>();
+
+                var web = new HtmlWeb();
+
+                var doc = web.Load(url);
+
+                var headlineNodes = doc.DocumentNode.SelectNodes($"//ul[@class='newsList']/li/dl/dd/a[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{keyword}')]");
+
+                if (headlineNodes != null)
+                {
+                    foreach (var headlineNode in headlineNodes)
+                    {
+                        headlines.Add(headlineNode.InnerText.Trim());
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+                return headlines;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"예외가 발생했습니다: {ex.Message}");
+                return null;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
