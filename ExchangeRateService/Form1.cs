@@ -13,6 +13,7 @@ using System.Timers;
 using static System.Net.WebRequestMethods;
 using System.Security.Policy;
 using HtmlAgilityPack;
+using System.Web;
 
 namespace ExchangeRateService
 {
@@ -108,48 +109,15 @@ namespace ExchangeRateService
             public string cur_nm { get; set; }
         }
 
-        private void LoadArticles()
-        {
-
-
-
-            // 크롤링한 기사 데이터를 예시로 배열에 저장
-            string[] articles = new string[]
-            {
-                "환율 급등, 경제에 미치는 영향은?",
-                "오늘의 주요 경제 뉴스",
-                "환율 하락, 수출 기업의 반응",
-                "외환 시장의 변동성 증가",
-                "달러 강세 지속 전망",
-                "유로화 약세, 원화에 미치는 영향",
-                "금리 인상과 환율의 관계",
-                "경제 전문가들의 환율 예측",
-                "환율 변동으로 인한 투자 전략",
-                "오늘의 외환 시장 브리핑"
-            };
-
-            // 각 텍스트박스에 기사 데이터 바인딩
-            text_article1.Text = articles[0];
-            text_article2.Text = articles[1];
-            text_article3.Text = articles[2];
-            text_article4.Text = articles[3];
-            text_article5.Text = articles[4];
-            text_article6.Text = articles[5];
-            text_article7.Text = articles[6];
-            text_article8.Text = articles[7];
-            text_article9.Text = articles[8];
-            text_article10.Text = articles[9];
-        }
-
         private void OnTimerElapsed(object sender, ElapsedEventArgs e)
         {
             try
             {
                 
 
-                string keyword = "환율";
-                string url = "https://finance.naver.com/news/mainnews.nhn";
-                List<string> headlines = GetStockHeadlines(url, keyword);
+                //string keyword = "환율";
+                string url = "https://finance.naver.com/news/news_list.naver?mode=LSS3D&section_id=101&section_id2=258&section_id3=429";
+                List<string> headlines = GetStockHeadlines(url);
 
                 if (headlines != null)
                 {
@@ -185,7 +153,7 @@ namespace ExchangeRateService
             }
         }
 
-        private List<string> GetStockHeadlines(string url, string keyword)
+        private List<string> GetStockHeadlines(string url)
         {
             try
             {
@@ -195,13 +163,14 @@ namespace ExchangeRateService
 
                 var doc = web.Load(url);
 
-                var headlineNodes = doc.DocumentNode.SelectNodes($"//ul[@class='newsList']/li/dl/dd/a[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{keyword}')]");
+                var headlineNodes = doc.DocumentNode.SelectNodes($"//ul[@class='realtimeNewsList']/li/dl/dd/a");
 
                 if (headlineNodes != null)
                 {
                     foreach (var headlineNode in headlineNodes)
                     {
-                        headlines.Add(headlineNode.InnerText.Trim());
+                        string decodedText = HttpUtility.HtmlDecode(headlineNode.InnerText.Trim());
+                        headlines.Add(decodedText); // 디코딩된 텍스트 추가
                     }
                 }
                 else

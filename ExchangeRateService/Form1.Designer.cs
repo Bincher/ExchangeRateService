@@ -163,6 +163,7 @@
             this.text_article1.ReadOnly = true;
             this.text_article1.Size = new System.Drawing.Size(763, 25);
             this.text_article1.TabIndex = 13;
+            this.text_article1.Text = "환율 관련 기사를 가져오고 있습니다. 최대 1분이 걸릴 수 있습니다.";
             // 
             // label_article
             // 
