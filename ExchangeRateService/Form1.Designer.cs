@@ -33,7 +33,6 @@
             this.label_today = new System.Windows.Forms.Label();
             this.label_yesterday = new System.Windows.Forms.Label();
             this.text_article2 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.text_article4 = new System.Windows.Forms.TextBox();
             this.text_article6 = new System.Windows.Forms.TextBox();
             this.text_article5 = new System.Windows.Forms.TextBox();
@@ -55,15 +54,15 @@
             this.text_today.Location = new System.Drawing.Point(108, 60);
             this.text_today.Name = "text_today";
             this.text_today.ReadOnly = true;
-            this.text_today.Size = new System.Drawing.Size(265, 25);
+            this.text_today.Size = new System.Drawing.Size(225, 25);
             this.text_today.TabIndex = 0;
             // 
             // text_yesterday
             // 
-            this.text_yesterday.Location = new System.Drawing.Point(108, 95);
+            this.text_yesterday.Location = new System.Drawing.Point(474, 60);
             this.text_yesterday.Name = "text_yesterday";
             this.text_yesterday.ReadOnly = true;
-            this.text_yesterday.Size = new System.Drawing.Size(265, 25);
+            this.text_yesterday.Size = new System.Drawing.Size(301, 25);
             this.text_yesterday.TabIndex = 1;
             // 
             // label_today
@@ -79,7 +78,7 @@
             // label_yesterday
             // 
             this.label_yesterday.AutoSize = true;
-            this.label_yesterday.Location = new System.Drawing.Point(12, 98);
+            this.label_yesterday.Location = new System.Drawing.Point(396, 63);
             this.label_yesterday.Name = "label_yesterday";
             this.label_yesterday.Size = new System.Drawing.Size(72, 15);
             this.label_yesterday.TabIndex = 3;
@@ -87,22 +86,15 @@
             // 
             // text_article2
             // 
-            this.text_article2.Location = new System.Drawing.Point(12, 182);
+            this.text_article2.Location = new System.Drawing.Point(12, 244);
             this.text_article2.Name = "text_article2";
             this.text_article2.ReadOnly = true;
             this.text_article2.Size = new System.Drawing.Size(763, 25);
             this.text_article2.TabIndex = 4;
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(15, 213);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(760, 25);
-            this.textBox2.TabIndex = 5;
-            // 
             // text_article4
             // 
-            this.text_article4.Location = new System.Drawing.Point(15, 244);
+            this.text_article4.Location = new System.Drawing.Point(15, 306);
             this.text_article4.Name = "text_article4";
             this.text_article4.ReadOnly = true;
             this.text_article4.Size = new System.Drawing.Size(760, 25);
@@ -110,7 +102,7 @@
             // 
             // text_article6
             // 
-            this.text_article6.Location = new System.Drawing.Point(15, 306);
+            this.text_article6.Location = new System.Drawing.Point(15, 368);
             this.text_article6.Name = "text_article6";
             this.text_article6.ReadOnly = true;
             this.text_article6.Size = new System.Drawing.Size(760, 25);
@@ -118,7 +110,7 @@
             // 
             // text_article5
             // 
-            this.text_article5.Location = new System.Drawing.Point(15, 275);
+            this.text_article5.Location = new System.Drawing.Point(15, 337);
             this.text_article5.Name = "text_article5";
             this.text_article5.ReadOnly = true;
             this.text_article5.Size = new System.Drawing.Size(760, 25);
@@ -126,7 +118,7 @@
             // 
             // text_article7
             // 
-            this.text_article7.Location = new System.Drawing.Point(15, 337);
+            this.text_article7.Location = new System.Drawing.Point(15, 399);
             this.text_article7.Name = "text_article7";
             this.text_article7.ReadOnly = true;
             this.text_article7.Size = new System.Drawing.Size(760, 25);
@@ -134,7 +126,7 @@
             // 
             // text_article3
             // 
-            this.text_article3.Location = new System.Drawing.Point(12, 213);
+            this.text_article3.Location = new System.Drawing.Point(12, 275);
             this.text_article3.Name = "text_article3";
             this.text_article3.ReadOnly = true;
             this.text_article3.Size = new System.Drawing.Size(763, 25);
@@ -142,7 +134,7 @@
             // 
             // text_article8
             // 
-            this.text_article8.Location = new System.Drawing.Point(15, 368);
+            this.text_article8.Location = new System.Drawing.Point(15, 430);
             this.text_article8.Name = "text_article8";
             this.text_article8.ReadOnly = true;
             this.text_article8.Size = new System.Drawing.Size(760, 25);
@@ -150,7 +142,7 @@
             // 
             // text_article9
             // 
-            this.text_article9.Location = new System.Drawing.Point(15, 399);
+            this.text_article9.Location = new System.Drawing.Point(15, 461);
             this.text_article9.Name = "text_article9";
             this.text_article9.ReadOnly = true;
             this.text_article9.Size = new System.Drawing.Size(760, 25);
@@ -158,7 +150,7 @@
             // 
             // text_article1
             // 
-            this.text_article1.Location = new System.Drawing.Point(12, 151);
+            this.text_article1.Location = new System.Drawing.Point(15, 213);
             this.text_article1.Name = "text_article1";
             this.text_article1.ReadOnly = true;
             this.text_article1.Size = new System.Drawing.Size(763, 25);
@@ -168,7 +160,7 @@
             // label_article
             // 
             this.label_article.AutoSize = true;
-            this.label_article.Location = new System.Drawing.Point(326, 133);
+            this.label_article.Location = new System.Drawing.Point(326, 195);
             this.label_article.Name = "label_article";
             this.label_article.Size = new System.Drawing.Size(142, 15);
             this.label_article.TabIndex = 14;
@@ -177,16 +169,16 @@
             // 
             // text_article10
             // 
-            this.text_article10.Location = new System.Drawing.Point(12, 430);
+            this.text_article10.Location = new System.Drawing.Point(15, 492);
             this.text_article10.Name = "text_article10";
             this.text_article10.ReadOnly = true;
-            this.text_article10.Size = new System.Drawing.Size(763, 25);
+            this.text_article10.Size = new System.Drawing.Size(760, 25);
             this.text_article10.TabIndex = 15;
             // 
             // label_ai
             // 
             this.label_ai.AutoSize = true;
-            this.label_ai.Location = new System.Drawing.Point(411, 66);
+            this.label_ai.Location = new System.Drawing.Point(12, 98);
             this.label_ai.Name = "label_ai";
             this.label_ai.Size = new System.Drawing.Size(54, 15);
             this.label_ai.TabIndex = 17;
@@ -195,19 +187,21 @@
             // 
             // text_ai
             // 
-            this.text_ai.Location = new System.Drawing.Point(414, 95);
+            this.text_ai.Location = new System.Drawing.Point(98, 98);
+            this.text_ai.Multiline = true;
             this.text_ai.Name = "text_ai";
             this.text_ai.ReadOnly = true;
-            this.text_ai.Size = new System.Drawing.Size(361, 25);
+            this.text_ai.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.text_ai.Size = new System.Drawing.Size(677, 83);
             this.text_ai.TabIndex = 18;
             // 
             // button_ai
             // 
-            this.button_ai.Location = new System.Drawing.Point(480, 60);
+            this.button_ai.Location = new System.Drawing.Point(12, 135);
             this.button_ai.Name = "button_ai";
-            this.button_ai.Size = new System.Drawing.Size(75, 23);
+            this.button_ai.Size = new System.Drawing.Size(54, 37);
             this.button_ai.TabIndex = 19;
-            this.button_ai.Text = "분석하기";
+            this.button_ai.Text = "분석";
             this.button_ai.UseVisualStyleBackColor = true;
             this.button_ai.Click += new System.EventHandler(this.button_ai_ClickAsync);
             // 
@@ -224,7 +218,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 462);
+            this.ClientSize = new System.Drawing.Size(788, 541);
             this.Controls.Add(this.label_title);
             this.Controls.Add(this.button_ai);
             this.Controls.Add(this.text_ai);
@@ -239,7 +233,6 @@
             this.Controls.Add(this.text_article5);
             this.Controls.Add(this.text_article6);
             this.Controls.Add(this.text_article4);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.text_article2);
             this.Controls.Add(this.label_yesterday);
             this.Controls.Add(this.label_today);
@@ -259,7 +252,6 @@
         private System.Windows.Forms.Label label_today;
         private System.Windows.Forms.Label label_yesterday;
         private System.Windows.Forms.TextBox text_article2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox text_article4;
         private System.Windows.Forms.TextBox text_article6;
         private System.Windows.Forms.TextBox text_article5;
