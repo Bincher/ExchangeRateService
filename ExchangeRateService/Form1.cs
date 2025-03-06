@@ -25,16 +25,17 @@ namespace ExchangeRateService
     public partial class Form1 : Form
     {
         private static readonly HttpClient client = new HttpClient();
+        private static System.Timers.Timer timer;
 
         public Form1()
         {
 
             InitializeComponent();
             LoadExchangeRates();
-            System.Timers.Timer timer;
-            timer = new System.Timers.Timer(10000);
+
+            timer = new System.Timers.Timer(1000);
             timer.Elapsed += OnTimerElapsed;
-            timer.AutoReset = true;
+            timer.AutoReset = false;
             timer.Enabled = true;
         }
 
@@ -85,11 +86,10 @@ namespace ExchangeRateService
                     {
                         string strResult = srd.ReadToEnd();
 
-                        // JSON 데이터 파싱
                         var exchangeRates = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ExchangeRate>>(strResult);
                         var usdRate = exchangeRates.FirstOrDefault(rate => rate.cur_unit == "USD")?.deal_bas_r;
 
-                        return usdRate; // USD의 deal_bas_r 값 반환
+                        return usdRate; 
                     }
                 }
             }
@@ -113,11 +113,9 @@ namespace ExchangeRateService
 
         private void OnTimerElapsed(object sender, ElapsedEventArgs e)
         {
+
             try
             {
-                
-
-                //string keyword = "환율";
                 string url = "https://finance.naver.com/news/news_list.naver?mode=LSS3D&section_id=101&section_id2=258&section_id3=429";
                 List<string> headlines = GetStockHeadlines(url);
 
@@ -153,6 +151,9 @@ namespace ExchangeRateService
             {
                 Console.WriteLine($"예외가 발생했습니다: {ex.Message}");
             }
+            
+
+            
         }
 
         private List<string> GetStockHeadlines(string url)
@@ -205,13 +206,15 @@ namespace ExchangeRateService
 
         private async void button_ai_ClickAsync(object sender, EventArgs e)
         {
+            Form2 loadingForm = new Form2();
+            loadingForm.Show();
+            this.Enabled = false;
 
             this.Invoke((MethodInvoker)delegate
             {
                 text_ai.Text = "분석 중입니다. 분석 과정은 최대 1분이 걸릴 수 있습니다.";
             });
 
-            // GPT API 호출 예제 (실제 API 키와 URL로 대체해야 함)
             string apiKey = "api-key";
             string prompt = $"오늘의 환율 정보: {text_today.Text}\n" +
                 $"어제의 환율 정보: {text_yesterday.Text}\n" +
@@ -252,7 +255,6 @@ namespace ExchangeRateService
             {
                 var responseString = await response.Content.ReadAsStringAsync();
                 dynamic responseObject = JsonConvert.DeserializeObject(responseString);
-                // 분석 결과를 텍스트박스에 표시
                 
                 this.Invoke((MethodInvoker)delegate
                 {
@@ -266,13 +268,15 @@ namespace ExchangeRateService
                     text_ai.Text = "분석 과정에서 문제가 발생하였습니다. 다시 시도해주세요.";
                 });
             }
-            
-            
+
+            this.Enabled = true;
+            loadingForm.Close();
+
         }
 
-        private async Task<string> CallGptApi(string apiKey, string prompt)
+        private void elementHost1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
         {
-            return "분석한 내용";
+
         }
     }
 }

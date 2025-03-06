@@ -51,7 +51,8 @@
             // 
             // text_today
             // 
-            this.text_today.Location = new System.Drawing.Point(108, 60);
+            this.text_today.Location = new System.Drawing.Point(107, 60);
+            this.text_today.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_today.Name = "text_today";
             this.text_today.ReadOnly = true;
             this.text_today.Size = new System.Drawing.Size(225, 25);
@@ -60,6 +61,7 @@
             // text_yesterday
             // 
             this.text_yesterday.Location = new System.Drawing.Point(474, 60);
+            this.text_yesterday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_yesterday.Name = "text_yesterday";
             this.text_yesterday.ReadOnly = true;
             this.text_yesterday.Size = new System.Drawing.Size(301, 25);
@@ -68,7 +70,7 @@
             // label_today
             // 
             this.label_today.AutoSize = true;
-            this.label_today.Location = new System.Drawing.Point(12, 63);
+            this.label_today.Location = new System.Drawing.Point(11, 62);
             this.label_today.Name = "label_today";
             this.label_today.Size = new System.Drawing.Size(72, 15);
             this.label_today.TabIndex = 2;
@@ -78,7 +80,7 @@
             // label_yesterday
             // 
             this.label_yesterday.AutoSize = true;
-            this.label_yesterday.Location = new System.Drawing.Point(396, 63);
+            this.label_yesterday.Location = new System.Drawing.Point(395, 62);
             this.label_yesterday.Name = "label_yesterday";
             this.label_yesterday.Size = new System.Drawing.Size(72, 15);
             this.label_yesterday.TabIndex = 3;
@@ -86,7 +88,8 @@
             // 
             // text_article2
             // 
-            this.text_article2.Location = new System.Drawing.Point(12, 244);
+            this.text_article2.Location = new System.Drawing.Point(11, 244);
+            this.text_article2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_article2.Name = "text_article2";
             this.text_article2.ReadOnly = true;
             this.text_article2.Size = new System.Drawing.Size(763, 25);
@@ -95,38 +98,43 @@
             // text_article4
             // 
             this.text_article4.Location = new System.Drawing.Point(15, 306);
+            this.text_article4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_article4.Name = "text_article4";
             this.text_article4.ReadOnly = true;
-            this.text_article4.Size = new System.Drawing.Size(760, 25);
+            this.text_article4.Size = new System.Drawing.Size(761, 25);
             this.text_article4.TabIndex = 6;
             // 
             // text_article6
             // 
             this.text_article6.Location = new System.Drawing.Point(15, 368);
+            this.text_article6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_article6.Name = "text_article6";
             this.text_article6.ReadOnly = true;
-            this.text_article6.Size = new System.Drawing.Size(760, 25);
+            this.text_article6.Size = new System.Drawing.Size(761, 25);
             this.text_article6.TabIndex = 7;
             // 
             // text_article5
             // 
-            this.text_article5.Location = new System.Drawing.Point(15, 337);
+            this.text_article5.Location = new System.Drawing.Point(15, 338);
+            this.text_article5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_article5.Name = "text_article5";
             this.text_article5.ReadOnly = true;
-            this.text_article5.Size = new System.Drawing.Size(760, 25);
+            this.text_article5.Size = new System.Drawing.Size(761, 25);
             this.text_article5.TabIndex = 8;
             // 
             // text_article7
             // 
             this.text_article7.Location = new System.Drawing.Point(15, 399);
+            this.text_article7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_article7.Name = "text_article7";
             this.text_article7.ReadOnly = true;
-            this.text_article7.Size = new System.Drawing.Size(760, 25);
+            this.text_article7.Size = new System.Drawing.Size(761, 25);
             this.text_article7.TabIndex = 9;
             // 
             // text_article3
             // 
-            this.text_article3.Location = new System.Drawing.Point(12, 275);
+            this.text_article3.Location = new System.Drawing.Point(11, 275);
+            this.text_article3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_article3.Name = "text_article3";
             this.text_article3.ReadOnly = true;
             this.text_article3.Size = new System.Drawing.Size(763, 25);
@@ -135,22 +143,25 @@
             // text_article8
             // 
             this.text_article8.Location = new System.Drawing.Point(15, 430);
+            this.text_article8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_article8.Name = "text_article8";
             this.text_article8.ReadOnly = true;
-            this.text_article8.Size = new System.Drawing.Size(760, 25);
+            this.text_article8.Size = new System.Drawing.Size(761, 25);
             this.text_article8.TabIndex = 11;
             // 
             // text_article9
             // 
             this.text_article9.Location = new System.Drawing.Point(15, 461);
+            this.text_article9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_article9.Name = "text_article9";
             this.text_article9.ReadOnly = true;
-            this.text_article9.Size = new System.Drawing.Size(760, 25);
+            this.text_article9.Size = new System.Drawing.Size(761, 25);
             this.text_article9.TabIndex = 12;
             // 
             // text_article1
             // 
-            this.text_article1.Location = new System.Drawing.Point(15, 213);
+            this.text_article1.Location = new System.Drawing.Point(15, 212);
+            this.text_article1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_article1.Name = "text_article1";
             this.text_article1.ReadOnly = true;
             this.text_article1.Size = new System.Drawing.Size(763, 25);
@@ -170,15 +181,16 @@
             // text_article10
             // 
             this.text_article10.Location = new System.Drawing.Point(15, 492);
+            this.text_article10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_article10.Name = "text_article10";
             this.text_article10.ReadOnly = true;
-            this.text_article10.Size = new System.Drawing.Size(760, 25);
+            this.text_article10.Size = new System.Drawing.Size(761, 25);
             this.text_article10.TabIndex = 15;
             // 
             // label_ai
             // 
             this.label_ai.AutoSize = true;
-            this.label_ai.Location = new System.Drawing.Point(12, 98);
+            this.label_ai.Location = new System.Drawing.Point(12, 118);
             this.label_ai.Name = "label_ai";
             this.label_ai.Size = new System.Drawing.Size(54, 15);
             this.label_ai.TabIndex = 17;
@@ -188,6 +200,7 @@
             // text_ai
             // 
             this.text_ai.Location = new System.Drawing.Point(98, 98);
+            this.text_ai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.text_ai.Multiline = true;
             this.text_ai.Name = "text_ai";
             this.text_ai.ReadOnly = true;
@@ -197,9 +210,10 @@
             // 
             // button_ai
             // 
-            this.button_ai.Location = new System.Drawing.Point(12, 135);
+            this.button_ai.Location = new System.Drawing.Point(11, 135);
+            this.button_ai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_ai.Name = "button_ai";
-            this.button_ai.Size = new System.Drawing.Size(54, 37);
+            this.button_ai.Size = new System.Drawing.Size(54, 38);
             this.button_ai.TabIndex = 19;
             this.button_ai.Text = "분석";
             this.button_ai.UseVisualStyleBackColor = true;
@@ -218,7 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 541);
+            this.ClientSize = new System.Drawing.Size(789, 541);
             this.Controls.Add(this.label_title);
             this.Controls.Add(this.button_ai);
             this.Controls.Add(this.text_ai);
@@ -238,6 +252,7 @@
             this.Controls.Add(this.label_today);
             this.Controls.Add(this.text_yesterday);
             this.Controls.Add(this.text_today);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
